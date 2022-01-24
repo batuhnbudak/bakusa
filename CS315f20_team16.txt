@@ -1,0 +1,138 @@
+begin
+
+
+
+
+integer a = 40;
+integer b = 20;
+
+double lenght;
+
+integer sum;
+integer sub;
+integer mult;
+integer div;
+integer mod;
+
+boolean said;
+
+integer input;
+char ch;
+string name;
+integer age;
+
+
+sum = a + b;
+sub = a - b;
+mult = a * b;
+div = a / b;
+mod = a % b;
+
+bksout(sum);
+bksout(sub);
+bksout(mult);
+bksout(div);
+bksout(mod);
+
+
+for(integer i = 0; i < 10; i+=1;){
+
+	b += 1;
+	bksout(b);
+}
+
+while(b < a){
+	b += 5;
+	bksout(b);
+}
+
+a = a - b;
+
+do{
+	a += 10;
+	bksout(a);
+
+}while(a < b);
+
+if(a =? b){
+	said = T;
+}
+
+else{
+
+	said = F;
+}
+
+bksout(said);
+
+bksout("Enter Your Name: ");
+
+string name = bksin();
+
+bksout("Enter Your Age: ");
+
+integer age = bksin();
+
+bksout("Enter Your Lenght: ");
+
+integer length = bksin();
+
+bksout("Enter a symbol: ");
+
+char ch = bksin();
+
+double getAltimeter ()
+{
+integer a = 5;
+return an;
+}
+double getThermometer ()
+{
+integer a = 5;
+return an;
+}
+double getAccelerometer ()
+{
+integer a = 5;
+return an;
+}
+void setCameraOnOff(boolean a)
+{
+	integer a = 5;
+}
+integer getTimer()
+{
+integer a = 5;
+return a;
+}
+string getHost()
+{
+integer a = 5;
+return dsa;
+}
+string getPort()
+{
+integer a = 5;
+return as;
+}
+
+void print(string name, integer age, integer lenght, char ch){
+
+
+bksout(name);
+bksout(age);
+bksout(lenght);
+bksout(ch);
+
+}
+
+print(name, age, lenght, ch);
+getInclination();
+getAltimeter();
+getThermometer();
+getAccelerometer();
+setCameraOnOff(true);
+setCameraOnOff(false);
+getTimer();
+getHost();
+getPort();

@@ -1,0 +1,142 @@
+%{
+#include <stdio.h>
+#include "y.tab.h"
+void yyerror(char *);
+%}
+
+LOWERCASE_CHAR [a-z]
+UPPERCASE_CHAR [A-Z]
+LETTER {LOWERCASE_CHAR}|{UPPERCASE_CHAR}
+DIGIT [0-9]
+STRING_IDENTIFIER "
+CHAR_IDENTIFIER '
+LP \(
+RP \)
+LB \{
+RB \}
+LSB \[
+RSB \]
+COMMA ,
+DOT \.
+SIGN {ADD_SIGN}|{SUB_SIGN}|{MULT_SIGN}|{DIV_SIGN}
+SL_COMMENT_SIGN "#"
+END_STMT \;
+UNDERSCORE _
+ASSIGNMENTOP =
+DEGREE "°"
+ADD_SIGN "+"
+SUB_SIGN "-"
+MULT_SIGN "*"
+DIV_SIGN "/"
+MOD_SIGN "%"
+LT <
+GT >
+AND \&\&
+OR \|\|
+RETURN return
+TRUE true|T
+FALSE false|F
+ADD_ASSIGNMENT "+="
+SUB_ASSIGNMENT "-="
+MULT_ASSIGNMENT "*="
+DIV_ASSIGNMENT "/="
+LTE <=
+GTE >=
+EQUIVALENCE_CHECK "=?"
+NOT_EQUAL_CHECK "=!"
+IF if
+ELSE else
+ELSE_IF "else if"
+DO do
+WHILE while
+FOR for
+NEWLINE "\n"
+INT_TYPE integer
+CHAR_TYPE char
+BOOLEAN_TYPE boolean
+STRING_TYPE string
+DOUBLE_TYPE double
+INTEGER [+-]?({DIGIT})+
+DOUBLE ({INTEGER})*(\.({DIGIT})+|({DIGIT})+\.)({DIGIT})*
+CHAR \'[^\\\']\'
+STRING \"([^\\\"]|\\\"|\\\n|\\\\)*\"
+BEGIN_FUNC begin
+IN_FUNC bksin
+OUT_FUNC bksout
+VOID void
+GETINCLINATION getInclination
+GETALTIMETER getAltimeter
+GETTHERMOMETER getThermometer
+GETACCELEROMETER getAccelerometer
+SETCAMERA setCameraOnOff
+GETTIMER getTimer
+GETHOST getHost
+GETPORT getPort
+IDENTIFIER {LETTER}({LETTER}|{DIGIT}|{UNDERSCORE})*
+%option yylineno
+%%
+{ASSIGNMENTOP} return ASSIGNMENTOP;
+{EQUIVALENCE_CHECK} return EQUIVALENCE_CHECK;
+{NOT_EQUAL_CHECK} return NOT_EQUAL_CHECK;
+{AND} return AND;
+{OR} return OR;
+{ELSE} return ELSE;
+{LP} return LP;
+{RP} return RP;
+{LB} return LB;
+{RB} return RB;
+{LSB} return LSB;
+{RSB} return RSB;
+{LT} return LT;
+{GT} return GT;
+{LTE} return LTE;
+{GTE} return GTE;
+{ADD_SIGN} return ADD_SIGN;
+{SUB_SIGN} return SUB_SIGN;
+{MULT_SIGN} return MULT_SIGN;
+{DIV_SIGN} return DIV_SIGN;
+{MOD_SIGN} return MOD_SIGN;
+{ADD_ASSIGNMENT} return ADD_ASSIGNMENT;
+{SUB_ASSIGNMENT} return SUB_ASSIGNMENT;
+{MULT_ASSIGNMENT} return MULT_ASSIGNMENT;
+{DIV_ASSIGNMENT} return DIV_ASSIGNMENT;
+{DEGREE} return DEGREE;
+{COMMA} return COMMA;
+{DOT} return DOT;
+{DOUBLE} return DOUBLE;
+{INTEGER} return INTEGER;
+{INT_TYPE} return INT_TYPE;
+{CHAR_TYPE} return CHAR_TYPE;
+{BOOLEAN_TYPE} return BOOLEAN_TYPE;
+{STRING_TYPE} return STRING_TYPE;
+{DOUBLE_TYPE} return DOUBLE_TYPE;
+{IF} return IF;
+{ELSE_IF} return ELSE_IF;
+{DO} return DO;
+{WHILE} return WHILE;
+{FOR} return FOR;
+{TRUE} return TRUE;
+{FALSE} return FALSE;
+{CHAR} return CHAR;
+{RETURN} return RETURN;
+{STRING} return STRING;
+{END_STMT} return END_STMT;
+{UNDERSCORE} return UNDERSCORE;
+{IN_FUNC} return IN_FUNC;
+{OUT_FUNC} return OUT_FUNC;
+{BEGIN_FUNC} return BEGIN_FUNC;
+{VOID} return VOID;
+{GETINCLINATION} return GETINCLINATION;
+{GETALTIMETER} return GETALTIMETER;
+{GETTHERMOMETER} return GETTHERMOMETER;
+{GETACCELEROMETER} return GETACCELEROMETER;
+{SETCAMERA} return SETCAMERA;
+{GETTIMER} return GETTIMER;
+{GETHOST} return GETHOST;
+{GETPORT} return GETPORT;
+{NEWLINE};
+{IDENTIFIER} return IDENTIFIER;
+%%
+int yywrap() {
+	return 1;
+}
